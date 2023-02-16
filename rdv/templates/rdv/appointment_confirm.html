@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Rendez-vous confirmé</h2>
+    <p>Merci pour votre réservation. Votre rendez-vous a été confirmé.</p>
+    <p>Date: {{ appointment.date }}</p>
+    <p>Heure: {{ appointment.time }}</p>
+    <p>Nom: {{ appointment.first_name }} {{ appointment.last_name }}</p>
+    <p>Email: {{ appointment.email }}</p>
+    <a href="{% url 'appointment_list' %}">Voir tous les rendez-vous</a>
+{% endblock %}

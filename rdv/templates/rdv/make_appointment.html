@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load static %}
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="{% static 'rdv/rdv.css' %}">
+  
+  <title>Prise_de_Rendez_vous</title>
+</head>
+{% if form.errors %}
+    <div class="alert alert-danger">
+        {% for field in form %}
+            {% for error in field.errors %}
+                <p>{{ error }}</p>
+            {% endfor %}
+        {% endfor %}
+    </div>
+{% endif %}
+
+
+
+<!-- <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit">
+</form>
+ -->
+
+  
+
+<!-- </html><form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Prendre rendez-vous</button>
+  </form>
+   #######################code qui marche avant le calendrier interacti####################"""" -->
+  <body>
+    <div class="head"></div>
+     <h1>Prise de rendez-vous</h1>
+      <div class="container">
+      
+      <form method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <!-- verification rdv -->
+        <button type="submit">Envoyer</button>
+      <!-- verification des creneaux dispo -->
+      <!-- <form method="post">
+        {% csrf_token %}
+        <label for="date">Date:</label>
+        <input type="date" name="date" id="date">
+        <br>
+        <label for="slot">Créneau:</label>
+        <select name="slot" id="slot">
+            {% for slot in available_slots %}
+                <option value="{{ slot.id }}">{{ slot.start_time }} - {{ slot.end_time }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <input type="submit" value="Prendre rendez-vous">
+    </form> -->
+    <!-- verification des creneaux dispo -->
+        
+      </form>
+    </div>
+  </body>
+</html>
+
