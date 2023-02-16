@@ -20,6 +20,7 @@ import rdv.views
 
 
 
+
  
 urlpatterns = [
     path('login/', auth_views.LoginView.as_view(), name='login'),
@@ -32,7 +33,7 @@ urlpatterns = [
     #test vue rendez vous
     path('appointments/', rdv.views.appointment_list, name='appointment_list'),
     path('appointment_confirm/', rdv.views.appointment_confirm, name='appointment_confirm'),
-   
+    
     # path('appointments/', appointment_view, name='appointments'),
     # path('', include('appointments.urls')),
 ]

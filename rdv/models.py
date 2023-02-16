@@ -5,12 +5,27 @@
 from django.db import models
 from django.core.exceptions import ValidationError
 
+# rendezvous/models.py
+
+from django.db import models
+
+from django.core.exceptions import ValidationError
+
 class Appointment(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     email = models.EmailField()
     date = models.DateField()
     time = models.TimeField()
+
+    def clean(self):
+        super().clean()
+
+        # Vérifier que la date est un jour de la semaine où les rendez-vous sont disponibles
+        if self.date.weekday() in [5, 6]:  # 5 = samedi, 6 = dimanche
+            raise ValidationError('Les rendez-vous ne sont pas disponibles le week-end.')
+
+
     
     
     
