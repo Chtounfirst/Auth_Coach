@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'rdv/vue_rdv.css' %}">
+    <title>verification_rendez_vous</title>
+</head>
+{% for appointment in appointments %}
+    <p>{{ appointment.client }} - {{ appointment.date }}</p>
+{% empty %}
+    <p>Aucun rendez-vous n'a été trouvé.</p>
+{% endfor %}
+<body>
+   <h1>Liste des rendez-vous</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Adresse e-mail</th>
+        <th>Date</th>
+        <th>heure</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for appointment in appointments %}
+      <tr>
+        <td>{{ appointment.first_name }}</td>
+        <td>{{ appointment.last_name }}</td>
+        <td>{{ appointment.email }}</td>
+        <td>{{ appointment.date }}</td>
+        <td>{{ appointment.time }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  
+
+ 
+</table>
+</body>
+</html>
+
+
+

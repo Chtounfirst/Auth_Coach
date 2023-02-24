@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% for slot in available_slots %}
+  <option value="{{ slot }}">{{ slot }}</option>
+{% endfor %}
+
+  {% load static %}
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="{% static 'rdv/rdv.css' %}">
+  <h1>Confirmation du rendez-vous</h1>
+</head>
+
+
+
+<body>
+ 
+  <!-- {% for appointment in appointments %}
+  <p>{{ appointment.client }} - {{ appointment.date }}</p>
+{% empty %}
+  <p>Aucun rendez-vous n'a été trouvé.</p>
+{% endfor %}
+   -->
+  {% block content %}
+  
+  <form action="{% url 'make_appointment' %}" method="post">
+    {% csrf_token %}
+    <!-- <button type="submit">Annuler le rendez-vous</button> -->
+  
+  
+
+  
+ 
+  <p>Merci {{ appointment.client.first_name }} {{ appointment.client.last_name }} pour votre demande de rendez-vous !</p>
+  <p>La date et l'heure de votre rendez-vous sont :</p>
+  <!-- <p>Date : {{ appointment.date }}</p>
+  <p>Heure : {{ appointment.time }}</p> -->
+  {% for appointment in appointments %}
+  <p>{{ appointment.client }} - {{ appointment.date }} - {{ appointment.time }}</p>
+
+{% empty %}
+  <p>Aucun rendez-vous n'a été trouvé.</p>
+{% endfor %}
+{% endblock %}
+
+
+  <a href="{% url 'home' %}">Retour à la page d'accueil</a>
+</form>
+</body>
+</html>

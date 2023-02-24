@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Confirmation</title>
+</head>
+<form method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}
+
+</form>
+<body>
+  
+  
+  {% block content %}
+  <h1>Confirmation du rendez-vous</h1>
+  <p>Merci {{ appointment.client.first_name }} {{ appointment.client.last_name }} pour votre demande de rendez-vous !</p>
+  <p>La date et l'heure de votre rendez-vous sont :</p>
+  <p>Date : {{ appointment.date }}</p>
+  <p>Heure : {{ appointment.time }}</p>
+{% endblock %}
+
+
+  <a href="{% url 'home' %}">Retour à la page d'accueil</a>
+  
+</body>
+</html>
+
+
+
+
+
+{% block content %}
+  <h1>Liste des rendez-vous</h1>
+  <ul>
+    {% for appointment in appointments %}
+      <li>{{ appointment.date_time }} - {{ appointment.client }} - {{ appointment.notes }}</li>
+    {% empty %}
+      <li>Aucun rendez-vous pour le moment.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
